@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+
+<StackPane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.jrgs.bloc.blocdenotas.OnboardingController"
+           stylesheets="@styles.css" styleClass="onboarding-window">
+
+    <!-- Contenido Central Animado -->
+    <VBox fx:id="contentBox" alignment="CENTER" spacing="25" maxWidth="500">
+        <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+
+        <!-- Indicador de Slide -->
+        <HBox fx:id="dotsContainer" alignment="CENTER" spacing="8" style="-fx-padding: 0 0 20 0;">
+            <!-- Se llenan dinámicamente o estáticos -->
+            <Circle radius="4" fill="WHITE"/>
+            <Circle radius="4" fill="#333"/>
+            <Circle radius="4" fill="#333"/>
+        </HBox>
+
+        <Label fx:id="slideTitle" text="Bienvenido" styleClass="slide-title"/>
+
+        <Label fx:id="slideContent" text="Descripción..." styleClass="slide-text" maxWidth="400"/>
+
+        <Region VBox.vgrow="ALWAYS" maxHeight="50"/>
+
+        <!-- Botón Siguiente (Cambia dinámicamente) -->
+        <Button fx:id="btnNext" text="Siguiente →" onAction="#nextSlide" styleClass="primary-btn"/>
+
+        <!-- Botones Finales (Ocultos inicialmente) -->
+        <HBox fx:id="actionButtons" spacing="15" alignment="CENTER" visible="false" managed="false">
+            <Button text="📂 Abrir Workspace" onAction="#openExisting" styleClass="action-btn-outlined"/>
+            <Button text="✨ Crear Nuevo" onAction="#createNew" styleClass="primary-btn"/>
+        </HBox>
+    </VBox>
+</StackPane>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.jrgs.bloc.blocdenotas.LoginController"
+           stylesheets="@styles.css"
+           styleClass="login-window-bg">
+
+    <VBox alignment="CENTER" spacing="25" maxWidth="400" maxHeight="600" styleClass="login-card">
+        <padding><Insets top="40" right="40" bottom="30" left="40"/></padding>
+
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="SahaNote" styleClass="login-title"/>
+            <Label text="Productivity Redefined" styleClass="subtitle"/>
+        </VBox>
+
+        <Separator style="-fx-opacity: 0.1;"/>
+
+        <VBox fx:id="loginPanel" spacing="20" alignment="CENTER">
+            <VBox spacing="5" alignment="CENTER_LEFT" maxWidth="Infinity">
+                <Label text="EMAIL" styleClass="input-label"/>
+                <TextField fx:id="emailField" promptText="usuario@email.com" styleClass="login-input"/>
+            </VBox>
+
+            <VBox spacing="5" alignment="CENTER_LEFT" maxWidth="Infinity">
+                <Label text="CONTRASEÑA" styleClass="input-label"/>
+                <PasswordField fx:id="passField" promptText="••••••••" styleClass="login-input"/>
+            </VBox>
+
+            <Button text="INGRESAR" onAction="#handleLogin" styleClass="primary-btn" maxWidth="Infinity"/>
+
+            <HBox alignment="CENTER">
+                <Label text="¿Nuevo aquí? " styleClass="text-muted"/>
+                <Hyperlink text="Crear una cuenta" onAction="#showRegister" styleClass="link-text"/>
+            </HBox>
+        </VBox>
+
+        <VBox fx:id="registerPanel" spacing="15" alignment="CENTER" visible="false" managed="false">
+            <TextField fx:id="regName" promptText="Nombre Completo" styleClass="login-input"/>
+            <TextField fx:id="regEmail" promptText="Correo Electrónico" styleClass="login-input"/>
+            <PasswordField fx:id="regPass" promptText="Contraseña" styleClass="login-input"/>
+
+            <Button text="REGISTRARSE" onAction="#handleRegister" styleClass="primary-btn" maxWidth="Infinity"/>
+
+            <HBox alignment="CENTER">
+                <Label text="¿Ya tienes cuenta? " styleClass="text-muted"/>
+                <Hyperlink text="Iniciar Sesión" onAction="#showLogin" styleClass="link-text"/>
+            </HBox>
+        </VBox>
+
+        <Label fx:id="errorLabel" style="-fx-text-fill: #ff5f56; -fx-font-size: 12px;"/>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <VBox alignment="CENTER" spacing="2" style="-fx-opacity: 0.6;">
+            <Label text="Creado por" styleClass="credits-small"/>
+            <Label text="Elvis Melchor Carbajal Dall'orso" styleClass="credits-name"/>
+            <Label text="Nombre artístico: Krailynd" styleClass="credits-alias"/>
+        </VBox>
+
+        <Button text="✕" onAction="#closeApp" styleClass="close-btn-text"/>
+    </VBox>
+</StackPane>

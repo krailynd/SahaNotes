@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane fx:id="mainContainer" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.jrgs.bloc.blocdenotas.MainController"
+            stylesheets="@styles.css"
+            styleClass="main-window">
+
+    <top>
+        <HBox fx:id="topBar" alignment="CENTER_LEFT" spacing="10" styleClass="header-bar"
+              onMousePressed="#onTitleBarPressed" onMouseDragged="#onTitleBarDragged" prefHeight="40">
+
+            <HBox alignment="CENTER_LEFT" prefWidth="150">
+                <Button onAction="#onToggleLeft" styleClass="icon-action-btn" text="☰">
+                    <tooltip><Tooltip text="Menu"/></tooltip>
+                </Button>
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <HBox alignment="CENTER" spacing="10">
+                <VBox alignment="CENTER">
+                    <Label text="SAHANOTES" styleClass="app-logo-text"/>
+                    <Label fx:id="workspaceLabel" text="Workspace" styleClass="workspace-path-text"/>
+                </VBox>
+
+                <Button onAction="#onToggleFocusMode" styleClass="monk-btn" text="🧘">
+                    <tooltip><Tooltip text="Modo Monje"/></tooltip>
+                </Button>
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <HBox alignment="CENTER_RIGHT" spacing="5" prefWidth="150">
+                <Button onAction="#onToggleRight" styleClass="icon-action-btn" text="📅" style="-fx-margin-right: 10px;"/>
+
+                <Button onAction="#onMinimize" styleClass="window-control-btn" text="—" />
+                <Button onAction="#onMaximize" styleClass="window-control-btn" text="□" />
+                <Button onAction="#onClose" styleClass="window-control-btn, close-btn" text="✕" />
+            </HBox>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox fx:id="leftSidebar" styleClass="sidebar" prefWidth="250" minWidth="50">
+            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="5" fx:id="sidebarHeader">
+                <Label text="EXPLORADOR" styleClass="section-header"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="🔄" onAction="#onRefresh" styleClass="icon-action-btn"/>
+            </HBox>
+
+            <HBox spacing="5" style="-fx-padding: 10 0 10 0;" fx:id="sidebarActions">
+                <Button text="📝+" onAction="#onCreateNote" styleClass="icon-action-btn" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="📂+" onAction="#onCreateFolder" styleClass="icon-action-btn" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="🎨+" onAction="#onCreateExcalidraw" styleClass="icon-action-btn" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <TreeView fx:id="fileTree" VBox.vgrow="ALWAYS" showRoot="false" styleClass="custom-tree"/>
+        </VBox>
+    </left>
+
+    <center>
+        <SplitPane fx:id="mainSplitPane" dividerPositions="0.5" styleClass="dark-split-pane">
+            <VBox fx:id="editorContainer" style="-fx-background-color: #1e1e1e;">
+                <TextField fx:id="noteTitle" promptText="Sin título" styleClass="title-input"/>
+
+                <HBox spacing="5" styleClass="toolbar-hbox" alignment="CENTER_LEFT">
+                    <Button text="B" onAction="#mdBold" styleClass="md-tool-btn"/>
+                    <Button text="I" onAction="#mdItalic" styleClass="md-tool-btn"/>
+                    <Button text="H1" onAction="#mdH1" styleClass="md-tool-btn"/>
+                    <Button text="[ ]" onAction="#mdCheck" styleClass="md-tool-btn"/>
+                    <Separator orientation="VERTICAL"/>
+                    <Button text="🖼️" onAction="#mdImage" styleClass="md-tool-btn"/>
+                    <Button text="Mark" onAction="#mdHighlight" styleClass="md-tool-btn, highlight-btn"/>
+                </HBox>
+
+                <TextArea fx:id="contentEditor" wrapText="true" VBox.vgrow="ALWAYS" styleClass="notion-editor"/>
+            </VBox>
+
+            <VBox style="-fx-background-color: #1e1e1e;">
+                <WebView fx:id="previewView" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <right>
+        <VBox fx:id="rightSidebar" styleClass="sidebar" prefWidth="250" spacing="20">
+            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+            <VBox alignment="CENTER" styleClass="widget-box">
+                <Label fx:id="clockLabel" text="00:00" styleClass="digital-clock"/>
+                <Label fx:id="dateLabel" text="..." styleClass="date-text"/>
+            </VBox>
+            <VBox spacing="10" styleClass="widget-box">
+                <Label text="CALENDARIO" styleClass="section-header"/>
+                <GridPane fx:id="calendarGrid" hgap="5" vgap="5" alignment="CENTER"/>
+            </VBox>
+            <VBox spacing="10" VBox.vgrow="ALWAYS" styleClass="widget-box">
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="TAREAS" styleClass="section-header"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="+" onAction="#addTodo" styleClass="icon-mini-btn"/>
+                </HBox>
+                <ListView fx:id="todoList" styleClass="todo-list-view" VBox.vgrow="ALWAYS"/>
+                <TextField fx:id="todoInput" promptText="Nueva tarea..." onAction="#addTodo" styleClass="todo-input"/>
+            </VBox>
+        </VBox>
+    </right>
+</BorderPane>

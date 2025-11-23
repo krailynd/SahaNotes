@@ -1,0 +1,656 @@
+/* AÑADIR/REEMPLAZAR ESTO PARA BOTONES WINDOWS */
+.window-control-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bbb; /* Color gris claro visible */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 12;
+    -fx-cursor: hand;
+}
+.window-control-btn:hover {
+    -fx-background-color: #333;
+    -fx-text-fill: white;
+}
+.close-btn:hover {
+    -fx-background-color: #d32f2f;
+    -fx-text-fill: white;
+}
+
+
+/* =============================================================================
+   GLOBAL & BASE
+   ============================================================================= */
+.root {
+    -fx-font-family: 'Segoe UI', 'Inter', sans-serif;
+    -fx-base: #1e1e1e;
+    -fx-background-color: #1e1e1e;
+    -fx-focus-color: transparent;
+}
+.scroll-bar { -fx-background-color: transparent; }
+.scroll-bar .track { -fx-background-color: transparent; }
+.scroll-bar .thumb { -fx-background-color: #444; -fx-background-radius: 5em; }
+.corner { -fx-background-color: transparent; }
+
+/* =============================================================================
+   MAIN INTERFACE
+   ============================================================================= */
+.main-window {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #333;
+    -fx-border-width: 1;
+}
+
+/* HEADER & WINDOW CONTROLS (Estilo Windows) */
+.header-bar {
+    -fx-background-color: #252525;
+    -fx-border-color: #333;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 5 10;
+}
+
+.window-control-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #aaa;
+    -fx-font-size: 14px;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+    -fx-font-family: 'Segoe UI Symbol'; /* Para los iconos */
+}
+.window-control-btn:hover { -fx-background-color: #333; -fx-text-fill: white; }
+.close-btn:hover { -fx-background-color: #e81123; -fx-text-fill: white; }
+
+.app-logo-text {
+    -fx-text-fill: #eee;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+}
+.workspace-path-text {
+    -fx-text-fill: #777;
+    -fx-font-size: 11px;
+}
+
+/* MODO MONJE ICONO */
+.monk-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #aaa;
+    -fx-font-size: 20px;
+    -fx-cursor: hand;
+    -fx-padding: 5;
+    -fx-border-radius: 50%;
+    -fx-border-color: transparent;
+}
+.monk-btn:hover {
+    -fx-text-fill: #4caf50; /* Verde Zen */
+    -fx-background-color: rgba(76, 175, 80, 0.1);
+}
+
+/* =============================================================================
+   SIDEBARS (Normal & Mini)
+   ============================================================================= */
+.sidebar {
+    -fx-background-color: #202020;
+    -fx-border-color: #2a2a2a;
+    -fx-border-width: 0 1 0 1;
+    -fx-transition: all 0.3s ease-in-out; /* Animación suave */
+}
+
+.section-header {
+    -fx-text-fill: #666;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+}
+
+.icon-action-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #aaa;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-padding: 5;
+    -fx-border-radius: 4;
+    -fx-min-width: 30px;
+    -fx-alignment: CENTER;
+}
+.icon-action-btn:hover { -fx-background-color: #333; -fx-text-fill: white; }
+
+/* ESTILOS PARA EL MINI SIDEBAR */
+.sidebar-mini {
+    -fx-pref-width: 50px; /* Ancho reducido */
+    -fx-min-width: 50px;
+    -fx-padding: 15 5 !important;
+    -fx-alignment: TOP_CENTER;
+}
+/* Ocultar textos en modo mini */
+.sidebar-mini .section-header,
+.sidebar-mini .tree-cell > .tree-disclosure-node, /* Flecha del árbol */
+.sidebar-mini .text-box { /* El texto del nombre del archivo */
+    -fx-opacity: 0;
+    -fx-pref-width: 0;
+    -fx-visibility: hidden;
+}
+/* Centrar iconos en modo mini */
+.sidebar-mini .tree-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 8 0;
+}
+
+/* TREE VIEW */
+.custom-tree { -fx-background-color: transparent; }
+.custom-tree .tree-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ccc;
+    -fx-padding: 4 5;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+}
+.custom-tree .tree-cell:filled:hover { -fx-background-color: #2a2a2a; }
+.custom-tree .tree-cell:filled:selected {
+    -fx-background-color: #333;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: #4caf50;
+    -fx-border-width: 0 0 0 2;
+}
+
+/* =============================================================================
+   EDITOR AREA
+   ============================================================================= */
+.dark-split-pane { -fx-background-color: #1e1e1e; -fx-padding: 0; }
+.dark-split-pane > .split-pane-divider { -fx-background-color: #111; -fx-padding: 1; }
+
+.title-input {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 20;
+    -fx-prompt-text-fill: #444;
+}
+
+.notion-editor {
+    -fx-text-fill: #ccc;
+    -fx-font-family: 'Consolas', monospace;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-padding: 10 20;
+}
+.notion-editor .content, .notion-editor:focused { -fx-background-color: transparent; }
+
+/* TOOLBAR BUTTONS */
+.toolbar-hbox {
+    -fx-padding: 0 15 5 15;
+    -fx-border-color: #333;
+    -fx-border-width: 0 0 1 0;
+}
+.md-tool-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #888;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 5 10;
+    -fx-border-radius: 4;
+}
+.md-tool-btn:hover { -fx-background-color: #333; -fx-text-fill: white; }
+.highlight-btn { -fx-text-fill: #ffd700; } .highlight-btn:hover {-fx-background-color: rgba(255, 215, 0, 0.1);}
+.help-btn { -fx-text-fill: #4caf50; } .help-btn:hover {-fx-background-color: rgba(76, 175, 80, 0.1);}
+
+/* =============================================================================
+   WIDGETS (DERECHA)
+   ============================================================================= */
+.widget-box {
+    -fx-background-color: #252525;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+    -fx-border-color: #333;
+    -fx-border-radius: 8;
+}
+.digital-clock { -fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: 100; }
+.date-text { -fx-text-fill: #888; -fx-font-size: 12px; }
+.calendar-day-header { -fx-text-fill: #4caf50; -fx-font-size: 10px; -fx-font-weight: bold; -fx-alignment: CENTER;}
+.calendar-day-cell { -fx-text-fill: #bbb; -fx-font-size: 12px; -fx-padding: 5; -fx-alignment: CENTER; -fx-background-radius: 50%; -fx-cursor: hand; }
+.calendar-day-cell:hover { -fx-background-color: #333; }
+.calendar-today { -fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: bold; }
+.todo-list-view, .todo-list-view .list-cell, .todo-list-view .list-cell:empty {
+    -fx-background-color: transparent; -fx-text-fill: #ddd; -fx-padding: 4 0;
+}
+.icon-mini-btn { -fx-background-color: transparent; -fx-text-fill: #4caf50; -fx-cursor: hand; -fx-padding:0;}
+.todo-input { -fx-background-color: #1a1a1a; -fx-text-fill: white; -fx-prompt-text-fill: #555; -fx-border-color: #333; -fx-border-radius: 4; -fx-padding: 8; }
+
+
+/* =============================================================================
+   1. GLOBAL & BASE THEME
+   ============================================================================= */
+.root {
+    -fx-font-family: 'Segoe UI', 'Inter', sans-serif;
+    -fx-base: #1e1e1e;
+    -fx-background-color: #1e1e1e;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* Scrollbars Oscuras y Minimalistas */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+.scroll-bar:vertical .track,
+.scroll-bar:horizontal .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #444;
+    -fx-background-radius: 5em;
+}
+.scroll-bar:vertical .thumb:hover,
+.scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #666;
+}
+.corner { -fx-background-color: transparent; }
+
+/* =============================================================================
+   2. VENTANA DE LOGIN (Elegante & Glass)
+   ============================================================================= */
+.login-window-bg {
+    -fx-background-color: linear-gradient(to bottom right, #050505, #1a1a1a);
+}
+
+.login-card {
+    -fx-background-color: #141414;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: #333;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 40, 0, 0, 15);
+}
+
+.login-title {
+    -fx-text-fill: white;
+    -fx-font-size: 36px;
+    -fx-font-weight: 900;
+    -fx-letter-spacing: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.1), 10, 0, 0, 0);
+}
+
+.subtitle {
+    -fx-text-fill: #888;
+    -fx-font-size: 14px;
+    -fx-letter-spacing: 1px;
+    -fx-font-weight: bold;
+}
+
+.input-label {
+    -fx-text-fill: #666;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 2 0;
+}
+
+.login-input {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #444;
+    -fx-background-radius: 8;
+    -fx-border-color: #333;
+    -fx-border-radius: 8;
+    -fx-padding: 12;
+    -fx-font-size: 14px;
+    -fx-transition: all 0.3s;
+}
+.login-input:focused {
+    -fx-border-color: #888;
+    -fx-background-color: #000;
+}
+
+.primary-btn {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8;
+    -fx-padding: 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.2), 10, 0, 0, 0);
+}
+.primary-btn:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-background-color: #f0f0f0;
+}
+
+.text-muted { -fx-text-fill: #666; }
+.link-text {
+    -fx-text-fill: #aaa;
+    -fx-underline: false;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+.link-text:hover { -fx-text-fill: white; }
+
+/* Créditos Login */
+.credits-small { -fx-text-fill: #444; -fx-font-size: 11px; }
+.credits-name { -fx-text-fill: #888; -fx-font-size: 13px; -fx-font-weight: bold; }
+.credits-alias { -fx-text-fill: #666; -fx-font-size: 12px; -fx-font-style: italic; }
+
+.close-btn-text {
+    -fx-background-color: transparent;
+    -fx-text-fill: #444;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+.close-btn-text:hover { -fx-text-fill: #ff5f56; }
+
+/* =============================================================================
+   3. ONBOARDING (Presentación)
+   ============================================================================= */
+.onboarding-window {
+    -fx-background-color: linear-gradient(to bottom, #111, #222);
+}
+
+.slide-title {
+    -fx-text-fill: white;
+    -fx-font-size: 32px;
+    -fx-font-weight: 900;
+}
+
+.slide-text {
+    -fx-text-fill: #aaa;
+    -fx-font-size: 16px;
+    -fx-text-alignment: CENTER;
+    -fx-wrap-text: true;
+    -fx-line-spacing: 5px;
+}
+
+.action-btn-outlined {
+    -fx-background-color: transparent;
+    -fx-border-color: #666;
+    -fx-border-radius: 8;
+    -fx-text-fill: #ccc;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+.action-btn-outlined:hover {
+    -fx-border-color: white;
+    -fx-text-fill: white;
+}
+
+/* =============================================================================
+   4. MAIN WORKSPACE (Estilo Notion/Obsidian)
+   ============================================================================= */
+.main-window {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #333;
+    -fx-border-width: 1;
+}
+
+/* Header */
+.header-bar {
+    -fx-background-color: #252525;
+    -fx-border-color: #333;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10 15;
+}
+
+.app-logo-text {
+    -fx-text-fill: #888;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 2px;
+}
+
+/* Botones Mac Traffic Lights */
+.window-control-btn {
+    -fx-background-color: transparent;
+    -fx-font-size: 10px;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-background-radius: 50%;
+    -fx-min-width: 12px;
+    -fx-min-height: 12px;
+    -fx-max-width: 12px;
+    -fx-max-height: 12px;
+    -fx-text-fill: transparent; /* Oculta el texto por defecto */
+}
+.close-dot { -fx-background-color: #ff5f56; }
+.close-dot:hover { -fx-background-color: #ff3b30; -fx-text-fill: #550000; }
+
+.min-dot { -fx-background-color: #ffbd2e; }
+.min-dot:hover { -fx-background-color: #ffad00; }
+
+.max-dot { -fx-background-color: #27c93f; }
+.max-dot:hover { -fx-background-color: #00a816; }
+
+/* Sidebar Izquierda y Derecha */
+.sidebar {
+    -fx-background-color: #202020;
+    -fx-border-color: #2a2a2a;
+    -fx-border-width: 0 1 0 1;
+}
+
+.section-header {
+    -fx-text-fill: #666;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+}
+
+.icon-action-btn {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: #aaa;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-min-width: 30px;
+}
+.icon-action-btn:hover {
+    -fx-background-color: #333;
+    -fx-text-fill: white;
+}
+
+/* File Tree View */
+.custom-tree {
+    -fx-background-color: transparent;
+    -fx-padding: 10 0;
+}
+.custom-tree .tree-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #999;
+    -fx-padding: 4 0;
+    -fx-font-size: 13px;
+}
+.custom-tree .tree-cell:filled:hover {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: #ddd;
+}
+.custom-tree .tree-cell:filled:selected {
+    -fx-background-color: #333;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: #4caf50;
+    -fx-border-width: 0 0 0 3; /* Linea verde a la izquierda */
+}
+
+/* =============================================================================
+   5. EDITOR AREA (Center)
+   ============================================================================= */
+.dark-split-pane {
+    -fx-background-color: #1e1e1e;
+    -fx-padding: 0;
+}
+.dark-split-pane > .split-pane-divider {
+    -fx-background-color: #111;
+    -fx-padding: 1;
+}
+
+.title-input {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 20 20 10 20;
+    -fx-prompt-text-fill: #444;
+}
+
+.notion-editor {
+    -fx-text-fill: #ccc;
+    -fx-font-family: 'Consolas', 'Courier New', monospace;
+    -fx-font-size: 15px;
+    -fx-background-color: transparent;
+    -fx-padding: 10 20;
+}
+.notion-editor .content {
+    -fx-background-color: transparent;
+}
+.notion-editor:focused {
+    -fx-background-color: transparent;
+}
+
+/* Botones Toolbar Markdown */
+.md-tool-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #777;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+.md-tool-btn:hover {
+    -fx-background-color: #333;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+}
+
+.md-tool-btn-highlight {
+    -fx-background-color: rgba(255, 255, 0, 0.1);
+    -fx-text-fill: #ffeb3b;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+.md-tool-btn-highlight:hover {
+    -fx-background-color: rgba(255, 255, 0, 0.3);
+}
+
+/* =============================================================================
+   6. WIDGETS (DERECHA)
+   ============================================================================= */
+.widget-box {
+    -fx-background-color: #252525;
+    -fx-background-radius: 12;
+    -fx-padding: 15;
+    -fx-border-color: #333;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 2);
+}
+
+/* Reloj */
+.digital-clock {
+    -fx-text-fill: white;
+    -fx-font-size: 32px;
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-font-weight: 100; /* Letra fina estilo iOS */
+}
+
+.date-text {
+    -fx-text-fill: #888;
+    -fx-font-size: 12px;
+    -fx-padding: 0 0 5 0;
+}
+
+/* Calendario */
+.calendar-day-header {
+    -fx-text-fill: #4caf50;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+.calendar-day-cell {
+    -fx-text-fill: #bbb;
+    -fx-font-size: 12px;
+    -fx-padding: 5;
+    -fx-alignment: CENTER;
+    -fx-background-radius: 50%;
+    -fx-cursor: hand;
+}
+.calendar-day-cell:hover {
+    -fx-background-color: #333;
+}
+.calendar-today {
+    -fx-background-color: #4caf50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* To-Do List */
+.todo-list-view {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-control-inner-background: transparent;
+}
+.todo-list-view .list-cell {
+    -fx-text-fill: #ddd;
+    -fx-background-color: transparent;
+    -fx-padding: 5 0;
+}
+.todo-list-view .list-cell:empty {
+    -fx-background-color: transparent;
+}
+
+.icon-mini-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4caf50;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+}
+.icon-mini-btn:hover { -fx-text-fill: #69f0ae; }
+
+.todo-input {
+    -fx-background-color: #1a1a1a;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #555;
+    -fx-border-color: #333;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8;
+    -fx-font-size: 12px;
+}
+
+/* Añadir esto al styles.css existente */
+
+.workspace-path-text {
+    -fx-text-fill: #666;
+    -fx-font-size: 10px;
+    -fx-font-family: monospace;
+}
+
+.monk-btn {
+    -fx-background-color: #2a2a2a;
+    -fx-background-radius: 50%;
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    -fx-cursor: hand;
+    -fx-border-color: #444;
+    -fx-border-radius: 50%;
+}
+.monk-btn:hover {
+    -fx-background-color: #4caf50; /* Verde Zen */
+    -fx-border-color: #4caf50;
+    -fx-effect: dropshadow(gaussian, rgba(76, 175, 80, 0.6), 10, 0, 0, 0);
+}
+
+/* AÑADIR/REEMPLAZAR ESTO PARA BOTONES WINDOWS */
+.window-control-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bbb; /* Color gris claro visible */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 12;
+    -fx-cursor: hand;
+}
+.window-control-btn:hover {
+    -fx-background-color: #333;
+    -fx-text-fill: white;
+}
+.close-btn:hover {
+    -fx-background-color: #d32f2f;
+    -fx-text-fill: white;
+}
